@@ -1,4 +1,3 @@
-// constantes
 package main
 
 import "fmt"

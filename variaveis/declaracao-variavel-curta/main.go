@@ -1,11 +1,10 @@
-// declaracao curta de variaveis
 package main
 
 import "fmt"
 
 func main() {
-	nome := "Ofina Unipar"
-	idade := 30
+	nome := "Anderson"
+	idade := 33
 
 	fmt.Printf("Nome: %s\nIdade: %d\n", nome, idade)
 }

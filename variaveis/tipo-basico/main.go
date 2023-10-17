@@ -9,8 +9,8 @@ func main() {
 	var texto string
 	var booleano bool
 
-	inteiro = 42
-	flutuante = 3.14
+	inteiro = 1
+	flutuante = 3.11
 	caractere = 'A'
 	texto = "Golang"
 	booleano = true
@@ -20,4 +20,5 @@ func main() {
 	fmt.Printf("Caractere: %c\n", caractere)
 	fmt.Printf("Texto: %s\n", texto)
 	fmt.Printf("Booleano: %v\n", booleano)
+
 }
