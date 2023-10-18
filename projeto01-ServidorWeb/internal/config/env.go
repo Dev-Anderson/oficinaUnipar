@@ -14,7 +14,7 @@ type Env struct {
 	NameDatabase string
 }
 
-func LoadEnv() Env {
+func LoadEnv() (Env, error) {
 	godotenv.Load()
 	return Env{
 		Host:         os.Getenv("api-db-host"),
@@ -22,5 +22,5 @@ func LoadEnv() Env {
 		User:         os.Getenv("api-db-user"),
 		Password:     os.Getenv("api-db-password"),
 		NameDatabase: os.Getenv("api-db-name"),
-	}
+	}, nil
 }
