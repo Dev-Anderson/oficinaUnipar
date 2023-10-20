@@ -1,0 +1,28 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Retorna uma mensagem de boas-vindas da API Temperatura",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Bem-vindo"
+                ],
+                "summary": "Retorna uma mensagem de boas-vindas da API",
+                "responses": {
+                    "200": {
+                        "description": "message: Api Temperatura rodando com sucesso!",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      description: Retorna uma mensagem de boas-vindas da API Temperatura
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'message: Api Temperatura rodando com sucesso!'
+          schema:
+            type: string
+      summary: Retorna uma mensagem de boas-vindas da API
+      tags:
+      - Bem-vindo
+swagger: "2.0"
