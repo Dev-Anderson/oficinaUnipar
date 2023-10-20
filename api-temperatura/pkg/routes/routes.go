@@ -25,6 +25,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		temperatura := main.Group("temperatura")
 		{
 			temperatura.POST("/", controllers.CreateTemperatura)
+			temperatura.GET("/", controllers.GetTemperatura)
 		}
 	}
 	return router

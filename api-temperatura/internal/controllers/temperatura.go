@@ -23,3 +23,22 @@ func CreateTemperatura(c *gin.Context) {
 	database.DB.Create(&temperatura)
 	c.JSON(http.StatusOK, temperatura)
 }
+
+func GetTemperatura(c *gin.Context) {
+	var temperaturas []models.Temperatura
+	database.DB.Find(&temperaturas)
+
+	var response []map[string]interface{}
+	for _, temperatura := range temperaturas {
+		dataFormatada := temperatura.Data.Format("2006-01-02")
+
+		temperaturaMap := map[string]interface{}{
+			"temperatura": temperatura.Temperatura,
+			"data":        dataFormatada,
+		}
+
+		response = append(response, temperaturaMap)
+	}
+
+	c.JSON(http.StatusOK, response)
+}
