@@ -13,6 +13,11 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		{
 			home.GET("/", controllers.Home)
 		}
+		user := main.Group("user")
+		{
+			user.GET("/", controllers.GetUser)
+			user.POST("/", controllers.CreateUser)
+		}
 	}
 	return router
 }

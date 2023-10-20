@@ -13,6 +13,9 @@ type ConfigEnv struct {
 	Password     string
 	NameDatabase string
 	ApiPort      string
+	SecretKey    string
+	Issure       string
+	TimeExpires  string
 }
 
 func LoadEnv() (ConfigEnv, error) {
@@ -24,5 +27,8 @@ func LoadEnv() (ConfigEnv, error) {
 		Password:     os.Getenv("db_password"),
 		NameDatabase: os.Getenv("db_name"),
 		ApiPort:      os.Getenv("api_port"),
+		SecretKey:    os.Getenv("secretKey"),
+		Issure:       os.Getenv("issure"),
+		TimeExpires:  os.Getenv("timeExpires"),
 	}, nil
 }
