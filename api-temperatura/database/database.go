@@ -2,6 +2,7 @@ package database
 
 import (
 	"api-temperatura/internal/config"
+	"api-temperatura/internal/models"
 	"fmt"
 	"log"
 
@@ -25,6 +26,5 @@ func ConnectDatabase() {
 		panic(err)
 	}
 
-	DB.AutoMigrate()
-
+	DB.AutoMigrate(&models.User{}, &models.Login{}, &models.Temperatura{})
 }
