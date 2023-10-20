@@ -17,10 +17,10 @@ type Env struct {
 func LoadEnv() (Env, error) {
 	godotenv.Load()
 	return Env{
-		Host:         os.Getenv("api-db-host"),
-		Port:         os.Getenv("api-db-port"),
-		User:         os.Getenv("api-db-user"),
-		Password:     os.Getenv("api-db-password"),
-		NameDatabase: os.Getenv("api-db-name"),
+		Host:         os.Getenv("api_db_host"),
+		Port:         os.Getenv("api_db_port"),
+		User:         os.Getenv("api_db_user"),
+		Password:     os.Getenv("api_db_password"),
+		NameDatabase: os.Getenv("api_db_name"),
 	}, nil
 }

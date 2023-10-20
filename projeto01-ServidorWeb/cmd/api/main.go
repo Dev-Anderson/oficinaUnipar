@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "servidor-web/database"
 
+func main() {
+	database.ConnectDatabase()
 }
