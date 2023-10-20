@@ -12,7 +12,7 @@ import (
 // @Tags 	Bem-vindo
 // @Produce  json
 // @Success 200 {string} string "message: Api Temperatura rodando com sucesso!"
-// @Router / [get]
+// @Router /home [get]
 func Home(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Api Temperatura rodando com sucesso!",

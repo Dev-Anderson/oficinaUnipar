@@ -1,7 +1,19 @@
+definitions:
+  models.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
-  /:
+  /home:
     get:
       description: Retorna uma mensagem de boas-vindas da API Temperatura
       produces:
@@ -14,4 +26,19 @@ paths:
       summary: Retorna uma mensagem de boas-vindas da API
       tags:
       - Bem-vindo
+  /user:
+    get:
+      description: Retorna a lista de usuarios cadastrados no banco de dados
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+      summary: Obtem a lista de usuarios
+      tags:
+      - User
 swagger: "2.0"

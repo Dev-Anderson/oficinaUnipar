@@ -32,6 +32,13 @@ func CreateUser(c *gin.Context) {
 	c.Status(http.StatusCreated)
 }
 
+// Consulta Usuario godoc
+// @Summary Obtem a lista de usuarios
+// @Description	Retorna a lista de usuarios cadastrados no banco de dados
+// @Tags 	User
+// @Produce	json
+// @Success	200 {array}	models.User
+// @Router	/user	[get]
 func GetUser(c *gin.Context) {
 	var user []models.User
 	database.DB.Find(&user)

@@ -11,7 +11,8 @@ import (
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
-	docs.SwaggerInfo.BasePath = "api/v1"
+	docs.SwaggerInfo.BasePath = "/api/v1"
+
 	main := router.Group("api/v1")
 	{
 		home := main.Group("home")
