@@ -3,17 +3,18 @@ definitions:
     properties:
       email:
         type: string
-      id:
-        type: integer
       password:
+        type: string
+    type: object
+  models.Temperatura:
+    properties:
+      temperatura:
         type: string
     type: object
   models.User:
     properties:
       email:
         type: string
-      id:
-        type: integer
       name:
         type: string
       password:
@@ -32,6 +33,8 @@ paths:
           description: 'message: Api Temperatura rodando com sucesso!'
           schema:
             type: string
+      security:
+      - apikey //Defina a autenticao necessaria para essa rota: []
       summary: Retorna uma mensagem de boas-vindas da API
       tags:
       - Bem-vindo
@@ -69,6 +72,46 @@ paths:
       summary: Efetua Login de usuario
       tags:
       - Login
+  /temperatura:
+    get:
+      description: Retorna a lista de temperatura cadastradas
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Temperatura'
+            type: array
+      summary: Consulta a temperatura
+      tags:
+      - Temperatura
+    post:
+      consumes:
+      - application/json
+      description: Cadastra uma nova temperatura
+      parameters:
+      - description: Cadatro de uma nova temperatura
+        in: body
+        name: temperatura
+        required: true
+        schema:
+          $ref: '#/definitions/models.Temperatura'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Temperatura'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: Cadastra uma nova temperatura
+      tags:
+      - Temperatura
   /user:
     get:
       description: Retorna a lista de usuarios cadastrados no banco de dados

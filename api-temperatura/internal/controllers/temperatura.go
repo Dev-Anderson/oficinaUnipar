@@ -9,6 +9,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Cadastro de nova temperatura
+// @Summary Cadastra uma nova temperatura
+// @Description Cadastra uma nova temperatura
+// @Tags Temperatura
+// @Accept json
+// @Produce json
+// @Param temperatura body models.Temperatura true "Cadatro de uma nova temperatura"
+// @Success 200 {object} models.Temperatura
+// @Failure 400 {string} string
+// @Router /temperatura [post]
 func CreateTemperatura(c *gin.Context) {
 	var temperatura models.Temperatura
 	if err := c.ShouldBindJSON(&temperatura); err != nil {
@@ -24,6 +34,13 @@ func CreateTemperatura(c *gin.Context) {
 	c.JSON(http.StatusOK, temperatura)
 }
 
+// Consulta temperatura godoc
+// @Summary Consulta a temperatura
+// @Description Retorna a lista de temperatura cadastradas
+// @Tags Temperatura
+// @Produce json
+// @Success 200 {array} models.Temperatura
+// @Router /temperatura [get]
 func GetTemperatura(c *gin.Context) {
 	var temperaturas []models.Temperatura
 	database.DB.Find(&temperaturas)

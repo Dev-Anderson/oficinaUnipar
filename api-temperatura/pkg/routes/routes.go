@@ -2,6 +2,7 @@ package routes
 
 import (
 	"api-temperatura/internal/controllers"
+	"api-temperatura/pkg/middleware"
 
 	"api-temperatura/docs"
 
@@ -15,7 +16,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 	main := router.Group("api/v1")
 	{
-		home := main.Group("home")
+		home := main.Group("home", middleware.Auth())
 		{
 			home.GET("/", controllers.Home)
 		}

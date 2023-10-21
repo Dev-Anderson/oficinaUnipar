@@ -17,6 +17,11 @@ const docTemplate = `{
     "paths": {
         "/home": {
             "get": {
+                "security": [
+                    {
+                        "apikey //Defina a autenticao necessaria para essa rota": []
+                    }
+                ],
                 "description": "Retorna uma mensagem de boas-vindas da API Temperatura",
                 "produces": [
                     "application/json"
@@ -80,6 +85,67 @@ const docTemplate = `{
                     },
                     "500": {
                         "description": "Erro interno do servidor: Erro ao gerar o token",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/temperatura": {
+            "get": {
+                "description": "Retorna a lista de temperatura cadastradas",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Temperatura"
+                ],
+                "summary": "Consulta a temperatura",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Temperatura"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Cadastra uma nova temperatura",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Temperatura"
+                ],
+                "summary": "Cadastra uma nova temperatura",
+                "parameters": [
+                    {
+                        "description": "Cadatro de uma nova temperatura",
+                        "name": "temperatura",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Temperatura"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Temperatura"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
                         "schema": {
                             "type": "string"
                         }
@@ -156,10 +222,15 @@ const docTemplate = `{
                 "email": {
                     "type": "string"
                 },
-                "id": {
-                    "type": "integer"
-                },
                 "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Temperatura": {
+            "type": "object",
+            "properties": {
+                "temperatura": {
                     "type": "string"
                 }
             }
@@ -169,9 +240,6 @@ const docTemplate = `{
             "properties": {
                 "email": {
                     "type": "string"
-                },
-                "id": {
-                    "type": "integer"
                 },
                 "name": {
                     "type": "string"

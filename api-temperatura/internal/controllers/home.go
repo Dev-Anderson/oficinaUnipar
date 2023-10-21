@@ -12,6 +12,7 @@ import (
 // @Tags 	Bem-vindo
 // @Produce  json
 // @Success 200 {string} string "message: Api Temperatura rodando com sucesso!"
+// @Security apikey //Defina a autenticao necessaria para essa rota
 // @Router /home [get]
 func Home(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
