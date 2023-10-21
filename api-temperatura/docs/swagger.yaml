@@ -1,4 +1,13 @@
 definitions:
+  models.Login:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+    type: object
   models.User:
     properties:
       email:
@@ -26,6 +35,40 @@ paths:
       summary: Retorna uma mensagem de boas-vindas da API
       tags:
       - Bem-vindo
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Efetua o login de um usuario com base nos dados fornecidos
+      parameters:
+      - description: Dados de login do usuario
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Token gerado com sucesso
+          schema:
+            type: string
+        "400":
+          description: 'Erro de solicitacao: Nao foi possivel enviar o body'
+          schema:
+            type: string
+        "401":
+          description: 'Erro interno do servidor: Erro ao gerar o token'
+          schema:
+            type: string
+        "500":
+          description: 'Erro interno do servidor: Erro ao gerar o token'
+          schema:
+            type: string
+      summary: Efetua Login de usuario
+      tags:
+      - Login
   /user:
     get:
       description: Retorna a lista de usuarios cadastrados no banco de dados
@@ -39,6 +82,31 @@ paths:
               $ref: '#/definitions/models.User'
             type: array
       summary: Obtem a lista de usuarios
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Cria um novo usuario com base nos dados fornecidos
+      parameters:
+      - description: Dados do usuário a serem criados
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Usuario criado com sucesso
+          schema:
+            type: string
+        "400":
+          description: 'Erro de solicitacao: Nao foi possivel vincular o JSON'
+          schema:
+            type: string
+      summary: Cria um novo usuario
       tags:
       - User
 swagger: "2.0"

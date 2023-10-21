@@ -9,6 +9,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Criar um novo usuario
+// @Summary Cria um novo usuario
+// @Description Cria um novo usuario com base nos dados fornecidos
+// @Tags User
+// @Accept json
+// @Produce json
+// @Param user body models.User true "Dados do usuário a serem criados"
+// @Success 201 {string} 201 "Usuario criado com sucesso"
+// @Failure 400 {object} string "Erro de solicitacao: Nao foi possivel vincular o JSON"
+// @Router /user [post]
 func CreateUser(c *gin.Context) {
 	var user models.User
 	err := c.ShouldBindJSON(&user)
