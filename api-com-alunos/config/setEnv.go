@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func LoadEnvFromFile(filename string) error {
+func setEnv(filename string) error {
 	file, err := os.Open(filename)
 	if err != nil {
 		return err

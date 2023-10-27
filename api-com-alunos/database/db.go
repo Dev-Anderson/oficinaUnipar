@@ -1,7 +1,6 @@
 package database
 
 import (
-	"api/config"
 	"api/models"
 	"fmt"
 
@@ -13,19 +12,21 @@ var DB *gorm.DB
 var err error
 
 func Conectabanco() error {
-	e := config.LoadEnv()
-
-	fmt.Print(e.Host)
+	host := "localhost"
+	port := "5432"
+	user := "postgres"
+	pass := "postgres"
+	dbname := "teste"
 
 	stringDB := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		e.Host, e.Port, e.User, e.Password, e.DBName)
+		host, port, user, pass, dbname)
 
 	DB, err = gorm.Open(postgres.Open(stringDB))
 	if err != nil {
 		panic(err)
 	}
 
-	DB.AutoMigrate(&models.Teste{})
+	DB.AutoMigrate(&models.Teste{}, &models.Temperatura{})
 
 	return nil
 }

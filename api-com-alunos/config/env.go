@@ -13,7 +13,7 @@ type Env struct {
 }
 
 func LoadEnv() Env {
-	err := LoadEnvFromFile(".env")
+	err := setEnv(".env")
 	if err != nil {
 		panic(err)
 	}
